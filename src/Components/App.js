@@ -24,7 +24,7 @@ class App extends Component {
     window.scrollTo(0, 0)
   }
 
-  handleSearch (e){
+  handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value.toLowerCase() })
   }
 
@@ -33,6 +33,7 @@ class App extends Component {
   }
 
   selectShow = (show) => {
+    console.log(show.id);
     Adapter.getShowEpisodes(show.id)
     .then((episodes) => this.setState({
       selectedShow: show,
@@ -53,6 +54,7 @@ class App extends Component {
   render (){
     return (
       <div>
+      {console.log(this.state.episodes)}
         <Nav handleFilter={this.handleFilter} handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
         <Grid celled>
           <Grid.Column width={5}>
